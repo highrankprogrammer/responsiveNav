@@ -1,14 +1,9 @@
-var settings = {
-	breakpointPx: 1000
-};
-
-HTMLDocument.prototype.getWidth = function(t) {
-	return window.getComputedStyle(document.getElementsByTagName(t)[0],"").getPropertyValue("width");
-}
-
 var responsiveNav = function() {
 	var rNav = this;
 	rNav.dropDownMenus = [];
+	rNav.settings = {
+		breakpoint: 1000
+	};
 	show = function(e) {
 		var e = e.menu;
 		e.isHidden = false;
@@ -71,7 +66,7 @@ var responsiveNav = function() {
 					show(menu);
 					break;
 				case "mouseleave":
-					if (parseInt(window.getComputedStyle(document.getElementsByTagName("body")[0],"").getPropertyValue("width"),10) < 1000) hide(menu);
+					if (parseInt(window.getComputedStyle(document.getElementsByTagName("body")[0],"").getPropertyValue("width"),10) < rNav.settings.breakpoint) hide(menu);
 					else show(menu);
 					break;
 				case "click":
