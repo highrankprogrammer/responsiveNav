@@ -1,0 +1,34 @@
+body {
+	font: 16px "Verdana", sans-serif;
+}
+
+.nav-container {
+	display: block;
+	margin: 50px;
+}
+
+.dropdown-menu {
+	display: none;
+	text-align: center;
+}
+
+.dropdown-menu-button {
+	display: block;
+	height: 20px;
+	width: 50px;
+	margin: auto;
+	background-color: gray;
+	border: thick solid black;
+}
+
+.dropdown-menu-link {
+	left: 0;
+	display: block;
+	text-decoration: none;
+	color: black;
+}
+
+.dropdown-menu-link:hover {
+	background-color: black;
+	color: white;
+}
