@@ -5,8 +5,8 @@ var responsiveNav = function() {
 		breakpoint: 1000
 	};
 	show = function(e) {
-		var e = e.menu;
 		e.isHidden = false;
+		var e = e.menu;
 		var s = e.style;
 		// save former settings
 		e.oldDisplay = s.display;
@@ -15,15 +15,15 @@ var responsiveNav = function() {
 		e.oldWidth = s.width;
 		// apply new settings
 		s.display = "block";
-		s.position = "absolute";
+		//s.position = "absolute";
 		s.zIndex = "9999";
 		s.width = "100%";
-		s.top = e.topPx;
-		s.left = 0;
+		//s.top = e.topPx;
+		//s.left = 0;
 	};
 	hide = function(e) {
-		var e = e.menu;
 		e.isHidden = true;
+		var e = e.menu;
 		var s = e.style;
 		// load saved settings
 		s.display = e.oldDisplay;
@@ -60,7 +60,6 @@ var responsiveNav = function() {
 			this.init();
 		};
 		function drop(evt) {
-			hide(menu);
 			switch(evt.type) {
 				case "mouseenter":
 					show(menu);
@@ -70,14 +69,10 @@ var responsiveNav = function() {
 					else show(menu);
 					break;
 				case "click":
+					console.log("Before processing click:", menu.isHidden);
 					if (menu.isHidden) show(menu);
 					else hide(menu);
-					break;
-				case "undefined":
-					hide(menu);
-					break;
-				default:
-					hide(menu);
+					console.log("After processing click:", menu.isHidden);
 					break;
 			}
 		};
@@ -102,5 +97,15 @@ var responsiveNav = function() {
 
 // Examples
 var Navigator = new responsiveNav();
-var dropDown1 = new Navigator.dropDownMenu().create([["Google", "http://www.google.com"],["Reddit", "http://www.reddit.com"]]);
-var dropDown2 = new Navigator.dropDownMenu().create([["Google", "http://www.google.com"],["Reddit", "http://www.reddit.com"]]);
+var dropDown = new Navigator.dropDownMenu().create([
+	["Home", ""],
+	["About Us", ""],
+	["Attorneys", ""],
+	["Practice Areas", ""],
+	["Automobile Accidents", ""],
+	["Back Injuries", ""],
+	["Brain Injuries", ""],
+	["Testimonials", ""],
+	["Free Consultation", ""],
+	["Contact", ""]
+	]);
