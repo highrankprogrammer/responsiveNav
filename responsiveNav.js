@@ -2,7 +2,8 @@ var responsiveNav = function() {
 	var rNav = this;
 	rNav.dropDownMenus = [];
 	rNav.settings = {
-		breakpoint: 1000
+		breakpoint: 1000,
+		overlay: false
 	};
 	show = function(e) {
 		e.isHidden = false;
@@ -15,11 +16,13 @@ var responsiveNav = function() {
 		e.oldWidth = s.width;
 		// apply new settings
 		s.display = "block";
-		//s.position = "absolute";
 		s.zIndex = "9999";
 		s.width = "100%";
-		//s.top = e.topPx;
-		//s.left = 0;
+		if (overlay) {
+			s.position = "absolute";
+			s.top = e.topPx;
+			s.left = 0;			
+		}
 	};
 	hide = function(e) {
 		e.isHidden = true;
@@ -33,7 +36,7 @@ var responsiveNav = function() {
 	};
 	this.dropDownMenu = function() {
 		var menu = this;
-		this.create = function(l, e) {
+		this.create = function(l) {
 			menu.id = rNav.dropDownMenus.length;
 			if (typeof l === "undefined") {
 				return document.write("<p style='display:block;color:red;font-weight:bold'>Error: Could not create new dropdown menu.</p>");
