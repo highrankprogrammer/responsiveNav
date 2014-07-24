@@ -1,22 +1,15 @@
+// gformNamesToPlaceHolders 0.0.1
+// Copyright 2014 Aaron John Schlosser
+// Adds placeholder text to Gravity Forms fields based on class names.
 var gformNamesToPlaceHolders = function() {
 	function getGformName(s) {
 		if (s.indexOf("gfield_error") == -1) {
-			var n = s.lastIndexOf("  ");
-			s = s.slice(10,n);
-			n = s.indexOf("  ");
-			s = s.slice(0,n);
-			return s;
-		} else {
-			var n = s.lastIndexOf("  ");
-			s = s.slice(21,n);
-			return s;		
+			s = s.slice(10,s.lastIndexOf("  "));
+			return s.slice(0,s.indexOf("  "));
 		}
+		else return s.slice(21,s.lastIndexOf("  "));	
 	}
-	var b = document.getElementById("gform_fields_1").childNodes;
-	var inputs = document.getElementsByClassName("ginput_container");
-	for (var i = 0; i < inputs.length; i++) {
-		inputs[i].firstChild.setAttribute
-			("placeholder",
-			getGformName(inputs[i].parentNode.getAttribute("class")));
-	}
+	var a = document.getElementsByClassName("ginput_container");
+	for (var i = 0; i < a.length; i++) a[i].firstChild.setAttribute("placeholder", getGformName(a[i].parentNode.getAttribute("class")));
 }
+gformNamesToPlaceHolders();
